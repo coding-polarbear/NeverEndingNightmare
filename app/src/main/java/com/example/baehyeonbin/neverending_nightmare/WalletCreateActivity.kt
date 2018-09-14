@@ -48,6 +48,7 @@ class WalletCreateActivity : AppCompatActivity(){
                             SharedPreferenceUtil.savePreferences(applicationContext, "server_private_key", response.body()!!.serverPrivateKey)
                             SharedPreferenceUtil.savePreferences(applicationContext, "server_mnemonic", response.body()!!.serverMnemonic)
                             var newIntent = Intent(this@WalletCreateActivity, NickNameActivity::class.java)
+                            newIntent.putExtra("wallet", response.body()!!.serverWallet)
                             startActivity(newIntent)
                         }
                         else -> {
