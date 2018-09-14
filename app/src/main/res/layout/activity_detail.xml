@@ -1,22 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp" >
+    android:orientation="vertical">
 
-    <TextView
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="계 목록" />
+        android:layout_height="150dp" >
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/money_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/detail_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary"
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp">
+
+
+            </android.support.v7.widget.Toolbar>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center"
+                    android:gravity="center"
+                    android:lineSpacingExtra="9sp"
+                    android:text="모크돈"
+                    android:textColor="#ffffff"
+                    android:textSize="45sp"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center"
+                    android:gravity="center"
+                    android:lineSpacingExtra="3sp"
+                    android:text="'참가 혹은 내가 개설한 모크돈의 목록 입니다.'"
+                    android:textColor="#ffffff"
+                    android:textSize="17sp" />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_detail" />
 
 </LinearLayout>
