@@ -35,7 +35,10 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
     private long duration = 700;
     private float deltaDegree = 129;
     private float deltaDeltaDegree = 3;
+    private float targetDegree = 180;
     private long deltaTime = 1000 / 60;
+    private int i = 0;
+    private int j = 1;
     Handler handler;
     private Runnable runnable;
     private Runnable in;
@@ -65,13 +68,13 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
             @Override
             public void onClick(final View view) {
                 pieChart.setRotationAngle(0);
-                degree = 0;
+                degree = targetDegree - 346;
                 duration = 700;
                 deltaDegree = 129;
                 deltaDeltaDegree = 3;
                 handler.postAtFrontOfQueue(runnable);
-                t = new Thread(in);
-                t.start();
+//                t = new Thread(in);
+//                t.start();
             }
         });
 
@@ -101,8 +104,9 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    deltaDegree -= deltaDeltaDegree;
-                    if (deltaDegree < 5) {
+                    if (deltaDegree > 5)
+                        deltaDegree -= deltaDeltaDegree;
+                    if (deltaDegree <= 5) {
                         deltaDeltaDegree = 0.5f;
                     }
 
@@ -112,6 +116,25 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
         runnable = new Runnable() {
             @Override
             public void run() {
+                if (i == 6) {
+                    i = 0;
+                    deltaDegree -= deltaDeltaDegree;
+                    if (deltaDegree < 0)
+                        deltaDegree = 0;
+                    if (deltaDegree <= 5) {
+                        if (j == 1) {
+                            j = 0;
+                            deltaDegree = 5;
+                        } else
+                            deltaDeltaDegree = 0.5f;
+                    }
+                } else {
+                    i++;
+                }
+                if (deltaDegree == 0) {
+                    Log.d("tada", "run: " + degree);
+                    return;
+                }
                 pieChart.setRotationAngle(degree);
                 pieChart.invalidate();
                 degree += deltaDegree;
