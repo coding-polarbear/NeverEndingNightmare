@@ -13,8 +13,8 @@ class NickNameActivity : AppCompatActivity(){
 
         lateinit var nickname : String
         nickname_button.setOnClickListener {
-            nickname = nickname_edittext.text.toString()
-            toast(nickname)
+                nickname = nickname_edittext.text.toString()
+//            toast(nickname)
 
             var intent = Intent(this@NickNameActivity, DetailActivity::class.java)
             startActivity(intent)

@@ -43,7 +43,7 @@ class WalletCreateActivity : AppCompatActivity(){
                 if(response.body() != null) {
                     when(response.code()) {
                         200 -> {
-                            toast("성공적으로 지갑이 생성되었습니다!")
+//                            toast("성공적으로 지갑이 생성되었습니다!")
                             SharedPreferenceUtil.savePreferences(applicationContext, "server_wallet", response.body()!!.serverWallet)
                             SharedPreferenceUtil.savePreferences(applicationContext, "server_private_key", response.body()!!.serverPrivateKey)
                             SharedPreferenceUtil.savePreferences(applicationContext, "server_mnemonic", response.body()!!.serverMnemonic)

@@ -1,15 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/main_background">
 
-    <Button
-        android:id="@+id/wallet_button"
+    <ImageView
+        android:layout_width="270dp"
+        android:layout_height="300dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="-150dp"
+        android:layout_marginTop="-130dp"
+        android:src="@drawable/circle2" />
+
+    <ImageView
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="-20dp"
+        android:layout_marginTop="220dp"
+        android:src="@drawable/circle1" />
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="-50dp"
+        android:layout_marginRight="-80dp"
+        android:src="@drawable/circle4" />
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="wallet create" />
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="64dp"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="6sp"
+            android:textColor="#ffffff"
+            android:textSize="29sp"
+            tools:text="하이콘 지갑을
+생성하시겠습니까 ?" />
+
+        <TextView
+            android:id="@+id/wallet_button"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_round_rect_white"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:lineSpacingExtra="4sp"
+            android:text="예"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:background="@drawable/bg_round_rect_white"
+            android:clickable="true"
+            android:fontFamily="Notosa"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:lineSpacingExtra="4sp"
+            android:text="아니오"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:lineSpacingExtra="4sp"
+        android:text="부릉부릉"
+        android:textColor="#ffffff"
+        android:textSize="20sp" />
+
 
 </RelativeLayout>

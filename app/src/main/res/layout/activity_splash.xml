@@ -6,13 +6,50 @@
     android:layout_height="match_parent"
     tools:context=".SplashActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_background">
 
+        <ImageView
+            android:layout_width="270dp"
+            android:layout_height="300dp"
+            android:layout_marginLeft="-100dp"
+            android:layout_marginTop="-80dp"
+            android:src="@drawable/circle2" />
+
+        <ImageView
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+            android:layout_marginLeft="85dp"
+            android:layout_marginTop="142dp"
+            android:src="@drawable/circle1" />
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="-50dp"
+            android:layout_marginRight="-80dp"
+            android:src="@drawable/circle4" />
+
+        <ImageView
+            android:layout_width="168dp"
+            android:layout_height="55dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/jacks_oppertunity" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:lineSpacingExtra="4sp"
+            android:text="부릉부릉"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
