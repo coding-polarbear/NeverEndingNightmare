@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        startActivity(new Intent(this, RotationActivity.class));
+
     }
 
 }

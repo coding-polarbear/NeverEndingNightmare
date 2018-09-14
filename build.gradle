@@ -10,14 +10,11 @@ buildscript {
         classpath 'com.android.tools.build:gradle:3.1.4'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
-        // NOTE: Do not place your application dependencies here; they belong
+        // NOTE: Do not place your appl/ication dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
-configurations.all {
-    // OkHttp 3.5.0+ includes the websockets API, so we need this to prevent a conflict
-    exclude module: 'okhttp-ws'
-}
+
 
 allprojects {
     repositories {
