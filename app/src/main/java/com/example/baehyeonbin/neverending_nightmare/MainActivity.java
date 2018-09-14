@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
 
                 Intent intent = new Intent(MainActivity.this, RegisterOrLoginActivity.class);
+                // Intent intent = new Intent(MainActivity.this, DetailActivity.class);
                 startActivity(intent);
             }
         });

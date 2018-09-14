@@ -194,6 +194,9 @@ class LoginActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks{
                     SharedPreferenceUtil.savePreferences(applicationContext, "server_mnemonic", jsonObject.getString("server_mnemonic"))
                     Log.d("hi", uri.path)
                     toast("성공적으로 지갑 데이터를 가져왔습니다!")
+
+                    var intent = Intent(this@LoginActivity, DetailActivity::class.java)
+                    startActivity(intent)
                 } catch (e: Exception) {
                     e.printStackTrace()
                     Toast.makeText(this, "파일을 불러오는데 문제가 발생하였습니다.", Toast.LENGTH_SHORT).show()

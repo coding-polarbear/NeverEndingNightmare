@@ -1,5 +1,6 @@
 package com.example.baehyeonbin.neverending_nightmare
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -26,6 +27,9 @@ class WalletCreateActivity : AppCompatActivity(){
     fun setListeners() {
         wallet_button.setOnClickListener {
             createWallet()
+            toast("wallet created!")
+
+            startActivity(intent)
         }
     }
 
@@ -45,6 +49,7 @@ class WalletCreateActivity : AppCompatActivity(){
                             SharedPreferenceUtil.savePreferences(applicationContext, "server_wallet", response.body()!!.serverWallet)
                             SharedPreferenceUtil.savePreferences(applicationContext, "server_private_key", response.body()!!.serverPrivateKey)
                             SharedPreferenceUtil.savePreferences(applicationContext, "server_mnemonic", response.body()!!.serverMnemonic)
+                            var intent = Intent(this@WalletCreateActivity, NickNameActivity::class.java)
                         }
                     }
                 }
