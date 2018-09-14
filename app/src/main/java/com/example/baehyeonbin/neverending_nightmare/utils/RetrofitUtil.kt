@@ -12,12 +12,7 @@ import java.io.File
 object RetrofitUtil {
 
     var retrofit = Retrofit.Builder()
-            .baseUrl("http://13.124.86.54:23002/api/v1g1/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-    val mlRetrofit : Retrofit = Retrofit.Builder()
-            .baseUrl("http://52.79.106.90:5050")
+            .baseUrl("http://13.125.148.77:23002/api/v1g1/api/v1g1/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
