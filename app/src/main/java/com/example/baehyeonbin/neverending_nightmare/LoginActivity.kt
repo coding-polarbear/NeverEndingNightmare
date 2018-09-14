@@ -16,7 +16,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Toast
 import com.example.baehyeonbin.neverending_nightmare.utils.SharedPreferenceUtil
-import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_load_wallet.*
 import org.apache.commons.io.FileUtils
 import org.jetbrains.anko.toast
 import org.json.JSONObject
@@ -44,7 +44,7 @@ class LoginActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_load_wallet)
 
         setListeners()
     }

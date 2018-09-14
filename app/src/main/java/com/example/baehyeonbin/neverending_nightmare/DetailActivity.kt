@@ -52,7 +52,7 @@ class DetailActivity : AppCompatActivity(){
             }
 
             R.id.overflow_mypage -> {
-                var intent = Intent(this@DetailActivity, BlankActivity::class.java)
+                var intent = Intent(this@DetailActivity, MypageActivity::class.java)
                 startActivity(intent)
             }
         }

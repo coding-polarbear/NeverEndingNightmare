@@ -45,8 +45,7 @@
             android:lineSpacingExtra="6sp"
             android:textColor="#ffffff"
             android:textSize="29sp"
-            tools:text="하이콘 지갑을
-생성하시겠습니까 ?" />
+            android:text="하이콘 지갑을\n생성하시겠습니까 ?" />
 
         <TextView
             android:id="@+id/wallet_button"
@@ -87,5 +86,8 @@
         android:textColor="#ffffff"
         android:textSize="20sp" />
 
+    <include
+        layout="@layout/layout_loading_screen"
+        android:visibility="gone" />
 
 </RelativeLayout>
