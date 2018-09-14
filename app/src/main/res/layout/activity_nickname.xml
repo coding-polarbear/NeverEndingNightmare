@@ -1,19 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/nickname_edittext"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/nickname_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="submit"
-        android:layout_below="@id/nickname_edittext"
-        android:layout_centerHorizontal="true" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="88dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="6sp"
+                android:text="당신의 이름을"
+                android:textColor="#001f36"
+                android:textSize="29sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="6sp"
+                    android:text="입력해 주세요"
+                    android:textColor="#001f36"
+                    android:textSize="29sp" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/ic_tag_faces_black_24dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="330dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="74dp"
+            android:layout_marginTop="44dp">
+
+            <EditText
+                android:id="@+id/nickname_edittext"
+                android:layout_width="330dp"
+                android:layout_height="150dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/bg_round_rect_white_back_corner"
+                android:gravity="center"
+                android:hint="장원준"
+                android:lineSpacingExtra="16sp"
+                android:paddingLeft="38dp"
+                android:paddingRight="38dp"
+                android:paddingTop="24dp"
+                android:textColor="#001f36"
+                android:textSize="80sp" />
+
+            <View
+                android:layout_width="296.5dp"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="23.5dp"
+                android:background="#182535" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/nickname_button"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/bg_round_rect_black"
+            android:clickable="true"
+            android:fontFamily="Notosa"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:lineSpacingExtra="6sp"
+            android:text="입력 완료"
+            android:textColor="#ffffff"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+    <include
+        layout="@layout/layout_loading_screen"
+        android:visibility="gone" />
+
 
 </RelativeLayout>

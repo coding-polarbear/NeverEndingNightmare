@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.baehyeonbin.neverending_nightmare.BlankActivity
 import com.example.baehyeonbin.neverending_nightmare.R
+import com.example.baehyeonbin.neverending_nightmare.WorkOutActivity
 import com.example.baehyeonbin.neverending_nightmare.data.MoneyItem
 import kotlinx.android.synthetic.main.money_list_item.view.*
 import org.jetbrains.anko.toast
@@ -22,10 +23,10 @@ class MoneyAdapter(val items : ArrayList<MoneyItem>, val context : Context) : Re
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, p1: Int) {
-        holder.money_item.text = items[p1].money
+        holder.money_item.text = items[p1].money + "\n" + items[p1].key
         holder.money_item.setOnClickListener {
             context.toast(holder.money_item.text)
-            context.startActivity(Intent(context, BlankActivity::class.java))
+            context.startActivity(Intent(context, WorkOutActivity::class.java))
         }
     }
 }
