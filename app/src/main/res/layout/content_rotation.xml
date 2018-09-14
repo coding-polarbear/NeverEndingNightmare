@@ -13,12 +13,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imgview"
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/rotation_view"
             android:layout_width="300dp"
             android:layout_height="300dp"
-            android:layout_centerInParent="true"
-            android:src="@drawable/ic_3d_rotation_red_300_48dp" />
+            android:layout_centerInParent="true" />
 
     </RelativeLayout>
 
