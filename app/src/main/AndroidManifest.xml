@@ -53,6 +53,11 @@
             android:label="BlankActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".NickNameActivity"
+            android:label="NickNameActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
