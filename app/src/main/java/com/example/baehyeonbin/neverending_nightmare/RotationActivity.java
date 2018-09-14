@@ -1,9 +1,12 @@
 package com.example.baehyeonbin.neverending_nightmare;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
@@ -21,16 +24,22 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RotationActivity extends AppCompatActivity implements Animation.AnimationListener, Runnable {
+public class RotationActivity extends AppCompatActivity implements Animation.AnimationListener {
 
     private View rotationView;
     private int rotationCount = 3;
-    private long duration = 700;
     private int curRotationCount = 0;
     private RotateAnimation rotate;
     private PieChart pieChart;
+    private float degree = 0;
+    private long duration = 700;
+    private float deltaDegree = 129;
+    private float deltaDeltaDegree = 3;
+    private long deltaTime = 1000 / 60;
+    Handler handler;
+    private Runnable runnable;
+    private Runnable in;
 
-    
 
     private RotateAnimation makeRotateAnimation(float fromDegrees, float toDegress) {
         RotateAnimation rotateAnimation =
@@ -51,13 +60,22 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
 
+            private Thread t;
 
             @Override
             public void onClick(final View view) {
-                pieChart.setRotationAngle(30);
-
+                pieChart.setRotationAngle(0);
+                degree = 0;
+                duration = 700;
+                deltaDegree = 129;
+                deltaDeltaDegree = 3;
+                handler.postAtFrontOfQueue(runnable);
+                t = new Thread(in);
+                t.start();
             }
         });
+
+        handler = new Handler();
 
         rotationView = findViewById(R.id.rotation_view);
         pieChart = (PieChart) rotationView;
@@ -72,6 +90,36 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
         PieData data = new PieData(set);
         pieChart.setData(data);
         pieChart.invalidate(); // refresh
+        pieChart.setCenterText("돌려돌려 돌림판~");
+        pieChart.setHoleRadius(0);
+        in = new Runnable() {
+            @Override
+            public void run() {
+                while (deltaDegree > 0) {
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    deltaDegree -= deltaDeltaDegree;
+                    if (deltaDegree < 5) {
+                        deltaDeltaDegree = 0.5f;
+                    }
+
+                }
+            }
+        };
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                pieChart.setRotationAngle(degree);
+                pieChart.invalidate();
+                degree += deltaDegree;
+                Log.d("ASD", "run: " + degree);
+                handler.postDelayed(runnable, deltaTime);
+            }
+        };
+
     }
 
     @Override
@@ -121,8 +169,4 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
     }
 
 
-    @Override
-    public void run() {
-
-    }
 }

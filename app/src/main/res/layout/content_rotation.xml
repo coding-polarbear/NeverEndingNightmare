@@ -13,6 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <View
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_centerInParent="true"
+            android:background="#939393" />
+
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/rotation_view"
             android:layout_width="300dp"
