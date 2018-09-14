@@ -27,9 +27,6 @@ class WalletCreateActivity : AppCompatActivity(){
     fun setListeners() {
         wallet_button.setOnClickListener {
             createWallet()
-            toast("wallet created!")
-
-            startActivity(intent)
         }
     }
 
@@ -42,6 +39,7 @@ class WalletCreateActivity : AppCompatActivity(){
             }
 
             override fun onResponse(call: Call<Room>, response: Response<Room>) {
+                Log.d(TAG, response.code().toString())
                 if(response.body() != null) {
                     when(response.code()) {
                         200 -> {
@@ -49,7 +47,11 @@ class WalletCreateActivity : AppCompatActivity(){
                             SharedPreferenceUtil.savePreferences(applicationContext, "server_wallet", response.body()!!.serverWallet)
                             SharedPreferenceUtil.savePreferences(applicationContext, "server_private_key", response.body()!!.serverPrivateKey)
                             SharedPreferenceUtil.savePreferences(applicationContext, "server_mnemonic", response.body()!!.serverMnemonic)
-                            var intent = Intent(this@WalletCreateActivity, NickNameActivity::class.java)
+                            var newIntent = Intent(this@WalletCreateActivity, NickNameActivity::class.java)
+                            startActivity(newIntent)
+                        }
+                        else -> {
+                            Log.e(TAG, response.code().toString())
                         }
                     }
                 }
