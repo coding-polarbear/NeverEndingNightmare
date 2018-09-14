@@ -79,7 +79,7 @@ class NickNameActivity : AppCompatActivity(), EasyPermissions.PermissionCallback
                             var serverMnemonic = SharedPreferenceUtil.getPreference(applicationContext, "server_mnemonic")!!
                             var jsonObject : JSONObject = JSONObject()
                             jsonObject.put("server_wallet", serverWallet)
-                            jsonObject.put("sever_private_key", serverPrivateKey)
+                            jsonObject.put("server_private_key", serverPrivateKey)
                             jsonObject.put("server_mnemonic", serverMnemonic)
                             data = jsonObject.toString()
                             name = ""

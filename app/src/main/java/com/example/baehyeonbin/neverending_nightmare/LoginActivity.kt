@@ -186,6 +186,7 @@ class LoginActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks{
                     val path = getPath(this, uri)
                     val file = File(path)
                     val s = FileUtils.readFileToString(file, "UTF-8")
+                    Log.d("json", s)
                     var jsonObject : JSONObject = JSONObject(s)
                     var value = ""
                     value += "server_wallet : ${jsonObject.getString("server_wallet")}"
