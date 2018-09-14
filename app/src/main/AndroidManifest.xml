@@ -26,6 +26,21 @@
             android:name=".RotationActivity"
             android:label="@string/title_activity_rotation"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".WalletCreateActivity"
+            android:label="WalletActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".RegisterOrLoginActivity"
+            android:label="RegisterOrLoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

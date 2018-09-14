@@ -30,6 +30,8 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
     private RotateAnimation rotate;
     private PieChart pieChart;
 
+    
+
     private RotateAnimation makeRotateAnimation(float fromDegrees, float toDegress) {
         RotateAnimation rotateAnimation =
                 new RotateAnimation(fromDegrees, toDegress, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
@@ -53,11 +55,7 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
             @Override
             public void onClick(final View view) {
                 pieChart.setRotationAngle(30);
-                /*duration = 700;
-                curRotationCount = 0;
-                rotationView.setRotation(0);
-                rotate = makeRotateAnimation(0, 360);
-                rotationView.startAnimation(rotate);*/
+
             }
         });
 
@@ -68,7 +66,6 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
         for (int i = 0; i < s.length; i++) {
             entries.add(new PieEntry((float) (100.0 / s.length), s[i]));
         }
-
 
         PieDataSet set = new PieDataSet(entries, "Election Results");
         set.setColors(ColorTemplate.VORDIPLOM_COLORS);
