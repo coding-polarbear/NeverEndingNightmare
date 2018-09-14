@@ -23,7 +23,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".RotationActivity"
             android:label="@string/title_activity_rotation"
@@ -31,28 +31,30 @@
         <activity
             android:name=".WalletCreateActivity"
             android:label="WalletActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".RegisterOrLoginActivity"
             android:label="RegisterOrLoginActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LoginActivity"
             android:label="LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DetailActivity"
             android:label="DetailActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BlankActivity"
             android:label="BlankActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".NickNameActivity"
             android:label="NickNameActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".LoadWalletActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".LoadWalletActivity" />
+        <activity android:name=".MypageActivity" />
+        <activity android:name=".WorkOutActivity"></activity>
     </application>
 
 </manifest>
