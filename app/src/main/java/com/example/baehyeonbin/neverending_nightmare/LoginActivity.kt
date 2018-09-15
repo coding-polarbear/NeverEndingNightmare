@@ -190,6 +190,7 @@ class LoginActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks{
                     var jsonObject : JSONObject = JSONObject(s)
                     var value = ""
                     value += "server_wallet : ${jsonObject.getString("server_wallet")}"
+                    SharedPreferenceUtil.savePreferences(applicationContext, "name", jsonObject.getString("name"))
                     SharedPreferenceUtil.savePreferences(applicationContext, "server_wallet", jsonObject.getString("server_wallet"))
                     SharedPreferenceUtil.savePreferences(applicationContext, "server_private_key", jsonObject.getString("server_private_key"))
                     SharedPreferenceUtil.savePreferences(applicationContext, "server_mnemonic", jsonObject.getString("server_mnemonic"))

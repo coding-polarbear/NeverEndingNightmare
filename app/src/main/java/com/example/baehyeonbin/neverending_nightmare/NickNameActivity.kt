@@ -77,7 +77,9 @@ class NickNameActivity : AppCompatActivity(), EasyPermissions.PermissionCallback
                             var serverWallet = SharedPreferenceUtil.getPreference(applicationContext, "server_wallet")!!
                             var serverPrivateKey = SharedPreferenceUtil.getPreference(applicationContext, "server_private_key")!!
                             var serverMnemonic = SharedPreferenceUtil.getPreference(applicationContext, "server_mnemonic")!!
+                            SharedPreferenceUtil.savePreferences(applicationContext, "name", nickname_edittext.text.toString())
                             var jsonObject : JSONObject = JSONObject()
+                            jsonObject.put("name", SharedPreferenceUtil.getPreference(applicationContext, "name"))
                             jsonObject.put("server_wallet", serverWallet)
                             jsonObject.put("server_private_key", serverPrivateKey)
                             jsonObject.put("server_mnemonic", serverMnemonic)

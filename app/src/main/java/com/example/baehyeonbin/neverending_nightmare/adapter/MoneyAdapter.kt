@@ -6,10 +6,9 @@ import android.view.View
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.example.baehyeonbin.neverending_nightmare.BlankActivity
 import com.example.baehyeonbin.neverending_nightmare.R
 import com.example.baehyeonbin.neverending_nightmare.WorkOutActivity
-import com.example.baehyeonbin.neverending_nightmare.data.MoneyItem
+import com.example.baehyeonbin.neverending_nightmare.beans.MoneyItem
 import kotlinx.android.synthetic.main.money_list_item.view.*
 import org.jetbrains.anko.toast
 
