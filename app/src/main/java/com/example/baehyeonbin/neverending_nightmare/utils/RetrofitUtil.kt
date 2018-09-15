@@ -16,6 +16,11 @@ object RetrofitUtil {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
+    var hyconRetrofit = Retrofit.Builder()
+            .baseUrl("http://13.125.148.77:2442/api/v1/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
     val MULTIPART_FORM_DATA = "multipart/form-data"
 
     fun getLoginRetrofit(context: Context): Retrofit {
