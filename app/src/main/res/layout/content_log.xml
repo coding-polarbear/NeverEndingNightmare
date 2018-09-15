@@ -7,6 +7,7 @@
         android:id="@+id/log_list_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="6pt"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:padding="10dp"/>
