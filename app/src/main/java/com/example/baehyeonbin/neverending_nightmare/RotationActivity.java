@@ -15,6 +15,12 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.baehyeonbin.neverending_nightmare.beans.RoomWallet;
+import com.example.baehyeonbin.neverending_nightmare.beans.User;
+import com.example.baehyeonbin.neverending_nightmare.beans.WalletRoomResponse;
+import com.example.baehyeonbin.neverending_nightmare.services.RoomService;
+import com.example.baehyeonbin.neverending_nightmare.services.UserService;
+import com.example.baehyeonbin.neverending_nightmare.utils.RetrofitUtil;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -23,6 +29,10 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RotationActivity extends AppCompatActivity implements Animation.AnimationListener {
 
@@ -43,6 +53,7 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
     private Runnable runnable;
     private Runnable in;
 
+    private ArrayList<User> userList;
 
     private RotateAnimation makeRotateAnimation(float fromDegrees, float toDegress) {
         RotateAnimation rotateAnimation =
@@ -73,19 +84,24 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
                 deltaDegree = 129;
                 deltaDeltaDegree = 3;
                 handler.postAtFrontOfQueue(runnable);
-//                t = new Thread(in);
-//                t.start();
+                //                t = new Thread(in);
+                //                t.start();
+
             }
         });
+        loadData();
 
+    }
+
+    private void setRotationView() {
         handler = new Handler();
 
         rotationView = findViewById(R.id.rotation_view);
         pieChart = (PieChart) rotationView;
-        String[] s = new String[]{"Green", "Yellow", "Red", "Blue", "HelloHelloHelloHelloHelloHello"};
+//        s = new String[]{"Green", "Yellow", "Red", "Blue", "HelloHelloHelloHelloHelloHello"};
         List<PieEntry> entries = new ArrayList<>();
-        for (int i = 0; i < s.length; i++) {
-            entries.add(new PieEntry((float) (100.0 / s.length), s[i]));
+        for (int i = 0; i < userList.size(); i++) {
+            entries.add(new PieEntry((float) (100.0 / userList.size()), userList.get(i).getName()));
         }
 
         PieDataSet set = new PieDataSet(entries, "Election Results");
@@ -191,5 +207,31 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
 
     }
 
+
+    private void loadData() {
+        RoomService roomService = RetrofitUtil.INSTANCE.getRetrofit().create(RoomService.class);
+        String wallet = getIntent().getStringExtra("wallet");
+        Log.d("wallet", wallet);
+        Call<WalletRoomResponse> call = roomService.getRandom(new RoomWallet(wallet));
+        call.enqueue(new Callback<WalletRoomResponse>() {
+            @Override
+            public void onResponse(Call<WalletRoomResponse> call, Response<WalletRoomResponse> response) {
+                Log.e("code", Integer.toString(response.code()));
+                if(response.body() != null) {
+                    switch(response.code()) {
+                        case 200: {
+                            userList = response.body().getMembers();
+                            setRotationView();
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<WalletRoomResponse> call, Throwable t) {
+                Log.e("error", t.toString());
+            }
+        });
+    }
 
 }

@@ -1,5 +1,6 @@
 package com.example.baehyeonbin.neverending_nightmare
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.baehyeonbin.neverending_nightmare.beans.MoneyItem
@@ -19,5 +20,11 @@ class WorkOutActivity : AppCompatActivity() {
 
     fun init() {
         name.text = item.key
+
+        lottoButton.setOnClickListener {
+            var newIntent = Intent(this@WorkOutActivity, RotationActivity::class.java)
+            newIntent.putExtra("wallet", item.wallet)
+            startActivity(newIntent)
+        }
     }
 }
