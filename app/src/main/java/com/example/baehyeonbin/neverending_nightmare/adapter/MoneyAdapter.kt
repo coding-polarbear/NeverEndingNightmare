@@ -25,7 +25,9 @@ class MoneyAdapter(val items : ArrayList<MoneyItem>, val context : Context) : Re
         holder.money_item.text = items[p1].money + "\n" + items[p1].key
         holder.money_item.setOnClickListener {
             context.toast(holder.money_item.text)
-            context.startActivity(Intent(context, WorkOutActivity::class.java))
+            val intent : Intent = Intent(context, WorkOutActivity::class.java)
+            intent.putExtra("item", items[p1])
+            context.startActivity(intent)
         }
     }
 }
