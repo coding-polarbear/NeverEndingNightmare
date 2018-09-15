@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NeverEnding-Nightmare</string>
+    <string name="app_name">잭의기회</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_rotation">RotationActivity</string>
 </resources>

@@ -3,19 +3,98 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/send_edittext"
-        android:inputType="numberDecimal"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+        android:orientation="vertical"
+        android:layout_marginTop="70dp">
 
-    <Button
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#001f36"
+            android:lineSpacingExtra="4sp"
+            android:gravity="center_horizontal"
+            android:text="회원님의 지갑에서 모크돈의 지갑으로" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="19sp"
+                android:textColor="#001f36"
+                android:lineSpacingExtra="5sp"
+                android:gravity="center_horizontal"
+                android:text="보낼 하이콘의 갯수를 정해주세요" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/face_1" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/cont"
+        android:layout_centerInParent="true"
+        android:layout_width="330dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="44dp">
+
+        <EditText
+            android:id="@+id/send_edittext"
+            android:inputType="numberDecimal"
+            android:layout_width="330dp"
+            android:layout_height="93dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/bg_round_rect_white_back_corner"
+            android:gravity="center"
+            android:hint="25"
+            android:lineSpacingExtra="16sp"
+            android:paddingLeft="38dp"
+            android:paddingRight="38dp"
+            android:paddingTop="2dp"
+            android:textColor="#001f36"
+            android:textSize="45sp" />
+
+        <View
+            android:layout_width="296.5dp"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="73.5dp"
+            android:background="#182535" />
+    </RelativeLayout>
+
+    <TextView
         android:id="@+id/send_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="submit"
-        android:layout_below="@id/send_edittext"
-        android:layout_centerHorizontal="true" />
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bg_round_rect_black"
+        android:clickable="true"
+        android:fontFamily="Notosa"
+        android:layout_below="@+id/cont"
+        android:layout_centerHorizontal="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:lineSpacingExtra="6sp"
+        android:text="입력 완료"
+        android:textColor="#ffffff"
+        android:layout_marginTop="-20dp"
+        android:textSize="30sp" />
 
 </RelativeLayout>
