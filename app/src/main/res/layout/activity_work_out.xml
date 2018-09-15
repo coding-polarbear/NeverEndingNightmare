@@ -153,7 +153,7 @@
                 android:textSize="30sp" />
 
             <TextView
-                android:id="@+id/receiveMoney"
+                android:id="@+id/back_button"
                 android:layout_width="300dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
