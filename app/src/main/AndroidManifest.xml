@@ -52,9 +52,23 @@
             android:name=".NickNameActivity"
             android:label="NickNameActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".LoadWalletActivity" />
-        <activity android:name=".MypageActivity" />
-        <activity android:name=".WorkOutActivity"></activity>
+        <activity android:name=".LoadWalletActivity"
+            android:label="LoadWalletActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MypageActivity"
+            android:label="MypageActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".WorkOutActivity"
+            android:label="WorkOutActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MoneySendActivity"
+            android:label="MoneySendActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MoneyBackActivity"
+            android:label="MoneyBackActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
