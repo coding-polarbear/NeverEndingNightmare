@@ -17,7 +17,7 @@ import retrofit2.Response
 class WorkOutActivity : AppCompatActivity() {
 
     lateinit var item : MoneyItem
-
+    var amount : Int = 0
     companion object {
         val TAG : String = WorkOutActivity::class.java.simpleName
     }
@@ -29,17 +29,20 @@ class WorkOutActivity : AppCompatActivity() {
         item = intent.getSerializableExtra("item") as MoneyItem
         init()
         loadData()
-        setListener()
     }
 
     fun setListener(){
         sendMoney.setOnClickListener {
             var intent = Intent(this@WorkOutActivity, MoneySendActivity::class.java)
+            intent.putExtra("amount", amount )
+            intent.putExtra("wallet", item.wallet)
             startActivity(intent)
         }
 
         receiveMoney.setOnClickListener {
             var intent = Intent(this@WorkOutActivity, MoneyBackActivity::class.java)
+            intent.putExtra("amount", amount )
+            intent.putExtra("wallet", item.wallet)
             startActivity(intent)
         }
     }
@@ -69,13 +72,20 @@ class WorkOutActivity : AppCompatActivity() {
                         200 -> {
                             name.text = item.key
                             var size = response.body()!!.result.members.size
+                            amount = response.body()!!.balance -2
                             peopleNum.text = "${size}명"
                             competition.text = "$size : 1"
+                            setListener()
                         }
                     }
                 }
             }
 
         })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadData()
     }
 }

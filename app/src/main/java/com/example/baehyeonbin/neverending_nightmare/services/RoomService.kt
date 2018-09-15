@@ -19,4 +19,7 @@ interface RoomService {
 
     @GET("room/{roomWallet}")
     fun getRoom(@Path("roomWallet") roomWallet: String) : Call<DetailRoom>
+
+    @POST("room/receive_coin")
+    fun receiveCoin(@Body receiveRequest: ReceiveRequest) : Call<ReceiveResponse>
 }

@@ -22,7 +22,7 @@ class MoneyAdapter(val items : ArrayList<MoneyItem>, val context : Context) : Re
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, p1: Int) {
-        holder.money_item.text = items[p1].money + "\n" + items[p1].key
+        holder.money_item.text =  items[p1].key
         holder.money_item.setOnClickListener {
             context.toast(holder.money_item.text)
             val intent : Intent = Intent(context, WorkOutActivity::class.java)

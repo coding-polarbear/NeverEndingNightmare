@@ -56,6 +56,7 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
     private Runnable in;
 
     private ArrayList<User> userList;
+    private String winner;
     private MediaPlayer m;
     private String lastPlayed;
 
@@ -263,7 +264,12 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
                     switch (response.code()) {
                         case 200: {
                             userList = response.body().getMembers();
-                            setRotationView();
+                            winner = response.body().getName();
+                            if(winner != null) {
+                                setRotationView();
+                            } else {
+                                Toast.makeText(RotationActivity.this, "정보를 불러올 수 없습니다", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 }
