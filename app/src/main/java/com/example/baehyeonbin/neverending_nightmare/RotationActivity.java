@@ -89,7 +89,10 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
 
             @Override
             public void onClick(final View view) {
-                if (isRolling) return;
+                if (isRolling) {
+                    Toast.makeText(RotationActivity.this, "이미 룰렛을 돌렸습니다.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 isRolling = true;
                 pieChart.setRotationAngle(0);
                 degree = targetDegree - 346;
