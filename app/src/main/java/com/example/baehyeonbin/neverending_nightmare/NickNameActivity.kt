@@ -62,7 +62,7 @@ class NickNameActivity : AppCompatActivity(), EasyPermissions.PermissionCallback
 
     fun register() {
         var userService = RetrofitUtil.retrofit.create(UserService::class.java)
-        var call = userService.register(User(intent.getStringExtra("wallet"), nickname_edittext.text.toString(), 0, null))
+        var call = userService.register(User(intent.getStringExtra("wallet"), nickname_edittext.text.toString(), 0.0, null))
         call.enqueue(object : Callback<Result> {
             override fun onFailure(call: Call<Result>, t: Throwable) {
                 Log.e(TAG, t.toString())

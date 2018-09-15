@@ -17,7 +17,7 @@ import retrofit2.Response
 class WorkOutActivity : AppCompatActivity() {
 
     lateinit var item : MoneyItem
-    var amount : Int = 0
+    var amount : Double = 0.0
     companion object {
         val TAG : String = WorkOutActivity::class.java.simpleName
     }

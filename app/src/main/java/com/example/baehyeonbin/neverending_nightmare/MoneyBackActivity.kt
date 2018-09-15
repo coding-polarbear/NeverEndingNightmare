@@ -20,6 +20,7 @@ class MoneyBackActivity : AppCompatActivity(){
     companion object {
         val TAG : String = MoneyBackActivity::class.java.simpleName
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.acrivity_moneyback)

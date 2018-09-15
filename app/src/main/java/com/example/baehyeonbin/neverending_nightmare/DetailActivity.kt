@@ -54,6 +54,7 @@ class DetailActivity : AppCompatActivity(){
             }
 
             override fun onResponse(call: Call<User>, response: Response<User>) {
+                Log.e("code" ,response.code().toString())
                 if(response.body() != null) {
                     when(response.code()) {
                         200 -> {

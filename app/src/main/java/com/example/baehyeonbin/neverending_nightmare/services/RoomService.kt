@@ -22,4 +22,7 @@ interface RoomService {
 
     @POST("room/receive_coin")
     fun receiveCoin(@Body receiveRequest: ReceiveRequest) : Call<ReceiveResponse>
+
+    @POST("room/send_coin")
+    fun sendCoin(@Body sendRequest: SendRequest) : Call<Room>
 }
