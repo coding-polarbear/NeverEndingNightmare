@@ -105,10 +105,11 @@ class WorkOutActivity : AppCompatActivity() {
                                 Log.d("user1", SharedPreferenceUtil.getPreference(applicationContext, "name"))
                                 Log.d("user2", response.body()!!.result.members[i].name)
                                 if (response.body()!!.result.members[i].name == SharedPreferenceUtil.getPreference(applicationContext, "name"))
-                                    userCoin = response.body()!!.result.members[i].coin
+                                    userCoin = response.body()!!.result.members[i].coin.toInt()
                             }
                             Log.d("userCoin", userCoin.toString())
-                            percent.text = "+${( userCoin.toDouble() / response.body()!!.balance) * 100}%"
+                            percent.text = String.format("%.2f", ( userCoin.toDouble() / response.body()!!.balance) * 100)
+                            setListener()
 
                         }
                     }

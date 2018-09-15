@@ -6,4 +6,4 @@ data class User (val name : String,
                  val wallet : String,
                  val balance : Double,
                  @SerializedName("entered_wallet") val enteredWallet : ArrayList<MoneyItem>?,
-                 val coin : Int)
+                 val coin : Double)
