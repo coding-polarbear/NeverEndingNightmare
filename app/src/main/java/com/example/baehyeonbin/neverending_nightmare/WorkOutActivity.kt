@@ -64,6 +64,10 @@ class WorkOutActivity : AppCompatActivity() {
                                 toast("성공적으로 받았습니다!")
                                 finish()
                             }
+                            else -> {
+                                Log.e("workOutActivity", response.code().toString())
+                                toast("이번달 수익을 이미 가져갔습니다!")
+                            }
                         }
                     }
                 }
@@ -100,7 +104,7 @@ class WorkOutActivity : AppCompatActivity() {
                             var size = response.body()!!.result.members.size
                             amount = response.body()!!.balance -2
                             peopleNum.text = "${size}명"
-                            competition.text = "$size : 1"
+                            competition.text = "${response.body()!!.balance} HYC"
                             for(i in 0 until response.body()!!.result.members.size) {
                                 Log.d("user1", SharedPreferenceUtil.getPreference(applicationContext, "name"))
                                 Log.d("user2", response.body()!!.result.members[i].name)

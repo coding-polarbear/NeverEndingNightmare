@@ -40,8 +40,8 @@ class MypageActivity : AppCompatActivity() {
                     when(response.code()) {
                         200 -> {
                             name.text = response.body()!!.name
-                            hyc.text = "${response.body()!!.balance}HYC"
-                            krw.text = "${(response.body()!!.balance * 25)}KRW"
+                            hyc.text = String.format("%.2f", response.body()!!.balance) + " HYC"
+                            krw.text = "${String.format("%.2f",response.body()!!.balance * 25)} KRW"
                         }
                     }
                 }
