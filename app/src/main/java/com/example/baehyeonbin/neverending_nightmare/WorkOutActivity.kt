@@ -9,6 +9,7 @@ import com.example.baehyeonbin.neverending_nightmare.beans.DetailRoom
 import com.example.baehyeonbin.neverending_nightmare.beans.MoneyItem
 import com.example.baehyeonbin.neverending_nightmare.services.RoomService
 import com.example.baehyeonbin.neverending_nightmare.utils.RetrofitUtil
+import com.example.baehyeonbin.neverending_nightmare.utils.SharedPreferenceUtil
 import kotlinx.android.synthetic.main.activity_work_out.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -70,12 +71,21 @@ class WorkOutActivity : AppCompatActivity() {
                 if(response.body() != null) {
                     when(response.code()) {
                         200 -> {
+                            var userCoin : Int = 0
                             name.text = item.key
                             var size = response.body()!!.result.members.size
                             amount = response.body()!!.balance -2
                             peopleNum.text = "${size}명"
                             competition.text = "$size : 1"
-                            setListener()
+                            for(i in 0 until response.body()!!.result.members.size) {
+                                Log.d("user1", SharedPreferenceUtil.getPreference(applicationContext, "name"))
+                                Log.d("user2", response.body()!!.result.members[i].name)
+                                if (response.body()!!.result.members[i].name == SharedPreferenceUtil.getPreference(applicationContext, "name"))
+                                    userCoin = response.body()!!.result.members[i].coin
+                            }
+                            Log.d("userCoin", userCoin.toString())
+                            percent.text = "+${( userCoin.toDouble() / response.body()!!.balance) * 100}%"
+
                         }
                     }
                 }
