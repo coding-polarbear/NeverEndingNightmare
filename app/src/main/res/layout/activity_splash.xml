@@ -35,10 +35,10 @@
             android:src="@drawable/circle4" />
 
         <ImageView
-            android:layout_width="168dp"
-            android:layout_height="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:src="@drawable/jacks_oppertunity" />
+            android:src="@drawable/jack" />
 
         <TextView
             android:layout_width="wrap_content"

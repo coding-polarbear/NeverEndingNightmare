@@ -61,6 +61,7 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
     private String winner;
     private MediaPlayer m;
     private String lastPlayed;
+    private View good_face;
 
     private RotateAnimation makeRotateAnimation(float fromDegrees, float toDegress) {
         RotateAnimation rotateAnimation =
@@ -107,6 +108,7 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
         handler = new Handler();
 
         rotationView = findViewById(R.id.rotation_view);
+        good_face = findViewById(R.id.good_face);
         pieChart = (PieChart) rotationView;
 //        s = new String[]{"Green", "Yellow", "Red", "Blue", "HelloHelloHelloHelloHelloHello"};
         List<PieEntry> entries = new ArrayList<>();
@@ -154,6 +156,7 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
                     return;
                 }
                 pieChart.setRotationAngle(degree);
+                good_face.setRotation(degree);
                 pieChart.invalidate();
                 degree += deltaDegree;
                 degree = degree % 360;
