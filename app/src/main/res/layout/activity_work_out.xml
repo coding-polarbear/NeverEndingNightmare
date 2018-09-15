@@ -139,36 +139,36 @@
                         android:textSize="20sp" />
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/sendMoney"
-                    android:layout_width="300dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/bg_round_rect_black"
-                    android:clickable="true"
-                    android:fontFamily="Notosa"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:gravity="center"
-                    android:lineSpacingExtra="6sp"
-                    android:text="돈 내기"
-                    android:textColor="#ffffff"
-                    android:textSize="30sp" />
+            <TextView
+                android:id="@+id/sendMoney"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/bg_round_rect_black"
+                android:clickable="true"
+                android:fontFamily="Notosa"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:lineSpacingExtra="6sp"
+                android:text="돈 내기"
+                android:textColor="#ffffff"
+                android:textSize="30sp" />
 
-                <TextView
-                    android:id="@+id/receiveMoney"
-                    android:layout_width="300dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/bg_round_rect_black"
-                    android:clickable="true"
-                    android:fontFamily="Notosa"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:gravity="center"
-                    android:lineSpacingExtra="6sp"
-                    android:text="돈 받기"
-                    android:textColor="#ffffff"
-                    android:textSize="30sp" />
+            <TextView
+                android:id="@+id/back_button"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_round_rect_black"
+                android:clickable="true"
+                android:fontFamily="Notosa"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:lineSpacingExtra="6sp"
+                android:text="돈 받기"
+                android:textColor="#ffffff"
+                android:textSize="30sp" />
 
                 <Space
                     android:layout_width="match_parent"

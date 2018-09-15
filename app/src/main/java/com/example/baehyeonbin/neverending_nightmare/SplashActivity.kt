@@ -23,7 +23,7 @@ class SplashActivity : AppCompatActivity() {
                 startActivity(intent)
             } else {
                 val intent = Intent(this@SplashActivity, RegisterOrLoginActivity::class.java)
-                // Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+//                 val intent = Intent(this@SplashActivity, DetailActivity::class.java)
                 startActivity(intent)
             }
 

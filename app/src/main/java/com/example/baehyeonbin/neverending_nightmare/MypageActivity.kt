@@ -35,6 +35,7 @@ class MypageActivity : AppCompatActivity() {
 
             @SuppressLint("SetTextI18n")
             override fun onResponse(call: Call<User>, response: Response<User>) {
+                Log.e("mypage code", response.code().toString())
                 if(response.body() != null) {
                     when(response.code()) {
                         200 -> {

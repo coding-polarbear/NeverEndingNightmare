@@ -116,6 +116,7 @@ class DetailActivity : AppCompatActivity(){
             var roomService : RoomService = RetrofitUtil.retrofit.create(RoomService::class.java)
             var name = SharedPreferenceUtil.getPreference(applicationContext, "name")!!
             var wallet = SharedPreferenceUtil.getPreference(applicationContext, "server_wallet")!!
+            Log.d("asdf", "name is $name, wallet is $wallet")
             var call = roomService.createRoom(CreateRoom(edittext.text.toString(), wallet, name ))
 
             call.enqueue(object : Callback<User> {
@@ -166,6 +167,7 @@ class DetailActivity : AppCompatActivity(){
                 }
 
                 override fun onResponse(call: Call<User>, response: Response<User>) {
+                    Log.e("detail http code", response.code().toString())
                     if(response.body() != null) {
                         when(response.code()) {
                             200 -> {
