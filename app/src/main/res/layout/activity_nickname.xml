@@ -46,7 +46,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/ic_tag_faces_black_24dp" />
+                    android:src="@drawable/face_1" />
             </LinearLayout>
         </LinearLayout>
 

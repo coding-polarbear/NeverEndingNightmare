@@ -62,7 +62,7 @@ class NickNameActivity : AppCompatActivity(), EasyPermissions.PermissionCallback
 
     fun register() {
         var userService = RetrofitUtil.retrofit.create(UserService::class.java)
-        var call = userService.register(User(intent.getStringExtra("wallet"), nickname_edittext.text.toString(), 0, null))
+        var call = userService.register(User(intent.getStringExtra("wallet"), nickname_edittext.text.toString(), 0.0, null))
         call.enqueue(object : Callback<Result> {
             override fun onFailure(call: Call<Result>, t: Throwable) {
                 Log.e(TAG, t.toString())
@@ -91,7 +91,7 @@ class NickNameActivity : AppCompatActivity(), EasyPermissions.PermissionCallback
                                     var intent = Intent(this@NickNameActivity, DetailActivity::class.java)
                                     startActivity(intent)
                             } else {
-                                Toast.makeText(applicationContext, "Fuck", Toast.LENGTH_LONG).show()
+//                                Toast.makeText(applicationContext, "Fuck", Toast.LENGTH_LONG).show()
                                 EasyPermissions.requestPermissions(this@NickNameActivity, "파일을 저장하기 위해서 권한이 필요합니다", 400, Manifest.permission.WRITE_EXTERNAL_STORAGE);
                             }
                         }
