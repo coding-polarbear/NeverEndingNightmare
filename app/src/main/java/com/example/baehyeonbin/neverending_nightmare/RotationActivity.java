@@ -59,9 +59,13 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
 
     private ArrayList<User> userList;
     private String winner;
+    private int winnerID;
     private MediaPlayer m;
     private String lastPlayed;
-    private View good_face;
+    private int[] colors =
+            {R.color.chart1, R.color.chart2, R.color.chart1, R.color.chart3, R.color.chart1,
+                    R.color.chart2, R.color.chart3, R.color.chart2, R.color.chart1, R.color.chart3};
+
 
     private RotateAnimation makeRotateAnimation(float fromDegrees, float toDegress) {
         RotateAnimation rotateAnimation =
@@ -79,9 +83,8 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        View fab = findViewById(R.id.hihi);
         fab.setOnClickListener(new View.OnClickListener() {
-
             private Thread t;
 
             @Override
@@ -100,6 +103,12 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
 
             }
         });
+        findViewById(R.id.confirm).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         loadData();
 
     }
@@ -108,7 +117,6 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
         handler = new Handler();
 
         rotationView = findViewById(R.id.rotation_view);
-        good_face = findViewById(R.id.good_face);
         pieChart = (PieChart) rotationView;
 //        s = new String[]{"Green", "Yellow", "Red", "Blue", "HelloHelloHelloHelloHelloHello"};
         List<PieEntry> entries = new ArrayList<>();
@@ -118,18 +126,19 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
             Log.d("ususus", "setRotationView: " + userList.get(i).getName());
             if (userList.get(i).getName().equals(winner)) {
                 targetDegree = (float) (i * (360.0 / userList.size()) + (360.0 / userList.size() / 2)) + 180;
+                winnerID = i;
             }
             entries.add(new PieEntry((float) (100.0 / userList.size()), userList.get(i).getName()));
         }
 
         PieDataSet set = new PieDataSet(entries, "사용자 ");
-        set.setColors(ColorTemplate.VORDIPLOM_COLORS);
+        set.setColors(colors, this);
         PieData data = new PieData(set);
         pieChart.setData(data);
         pieChart.invalidate(); // refresh
         pieChart.setCenterText("돌려돌려 돌림판~");
         Description d = new Description();
-        d.setText("돌려돌려 돌림판~");
+        d.setText("");
         pieChart.setDescription(d);
         pieChart.setHoleRadius(0);
         pieChart.setUsePercentValues(false);
@@ -152,11 +161,12 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
                     i++;
                 }
                 if (deltaDegree == 0) {
+
                     Log.d("tada", "target : " + targetDegree + "result: " + degree);
+                    Toast.makeText(RotationActivity.this, "우승자는 " + winner + "입니다!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 pieChart.setRotationAngle(degree);
-                good_face.setRotation(degree);
                 pieChart.invalidate();
                 degree += deltaDegree;
                 degree = degree % 360;
