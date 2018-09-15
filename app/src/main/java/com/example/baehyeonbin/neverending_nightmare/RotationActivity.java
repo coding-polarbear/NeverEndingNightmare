@@ -24,6 +24,7 @@ import com.example.baehyeonbin.neverending_nightmare.services.RoomService;
 import com.example.baehyeonbin.neverending_nightmare.services.UserService;
 import com.example.baehyeonbin.neverending_nightmare.utils.RetrofitUtil;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
@@ -54,11 +55,13 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
     Handler handler;
     private Runnable runnable;
     private Runnable in;
+    private boolean isRolling = false;
 
     private ArrayList<User> userList;
     private String winner;
     private MediaPlayer m;
     private String lastPlayed;
+    private View good_face;
 
     private RotateAnimation makeRotateAnimation(float fromDegrees, float toDegress) {
         RotateAnimation rotateAnimation =
@@ -83,12 +86,15 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
 
             @Override
             public void onClick(final View view) {
+                if (isRolling) return;
+                isRolling = true;
                 pieChart.setRotationAngle(0);
                 degree = targetDegree - 346;
                 duration = 700;
                 deltaDegree = 129;
                 deltaDeltaDegree = 3;
                 handler.postAtFrontOfQueue(runnable);
+                playSound();
                 //                t = new Thread(in);
                 //                t.start();
 
@@ -102,10 +108,17 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
         handler = new Handler();
 
         rotationView = findViewById(R.id.rotation_view);
+        good_face = findViewById(R.id.good_face);
         pieChart = (PieChart) rotationView;
 //        s = new String[]{"Green", "Yellow", "Red", "Blue", "HelloHelloHelloHelloHelloHello"};
         List<PieEntry> entries = new ArrayList<>();
+        Log.d("winneris", "setRotationView: " + winner);
+
         for (int i = 0; i < userList.size(); i++) {
+            Log.d("ususus", "setRotationView: " + userList.get(i).getName());
+            if (userList.get(i).getName().equals(winner)) {
+                targetDegree = (float) (i * (360.0 / userList.size()) + (360.0 / userList.size() / 2)) + 180;
+            }
             entries.add(new PieEntry((float) (100.0 / userList.size()), userList.get(i).getName()));
         }
 
@@ -115,25 +128,11 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
         pieChart.setData(data);
         pieChart.invalidate(); // refresh
         pieChart.setCenterText("돌려돌려 돌림판~");
+        Description d = new Description();
+        d.setText("돌려돌려 돌림판~");
+        pieChart.setDescription(d);
         pieChart.setHoleRadius(0);
-        in = new Runnable() {
-            @Override
-            public void run() {
-                while (deltaDegree > 0) {
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    if (deltaDegree > 5)
-                        deltaDegree -= deltaDeltaDegree;
-                    if (deltaDegree <= 5) {
-                        deltaDeltaDegree = 0.5f;
-                    }
-
-                }
-            }
-        };
+        pieChart.setUsePercentValues(false);
         runnable = new Runnable() {
             @Override
             public void run() {
@@ -153,12 +152,14 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
                     i++;
                 }
                 if (deltaDegree == 0) {
-                    Log.d("tada", "run: " + degree);
+                    Log.d("tada", "target : " + targetDegree + "result: " + degree);
                     return;
                 }
                 pieChart.setRotationAngle(degree);
+                good_face.setRotation(degree);
                 pieChart.invalidate();
                 degree += deltaDegree;
+                degree = degree % 360;
                 Log.d("ASD", "run: " + degree);
                 handler.postDelayed(runnable, deltaTime);
             }
@@ -213,7 +214,7 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
     }
 
     public void playSound() {
-        String word = "roulette_sound";
+        String word = "rullete";
         try {
             if ((m == null)) {
 
@@ -265,7 +266,7 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
                         case 200: {
                             userList = response.body().getMembers();
                             winner = response.body().getName();
-                            if(winner != null) {
+                            if (winner != null) {
                                 setRotationView();
                             } else {
                                 Toast.makeText(RotationActivity.this, "정보를 불러올 수 없습니다", Toast.LENGTH_SHORT).show();

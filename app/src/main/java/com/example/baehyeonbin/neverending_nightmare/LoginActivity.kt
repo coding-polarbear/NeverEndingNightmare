@@ -194,7 +194,7 @@ class LoginActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks{
                     SharedPreferenceUtil.savePreferences(applicationContext, "server_wallet", jsonObject.getString("server_wallet"))
                     SharedPreferenceUtil.savePreferences(applicationContext, "server_private_key", jsonObject.getString("server_private_key"))
                     SharedPreferenceUtil.savePreferences(applicationContext, "server_mnemonic", jsonObject.getString("server_mnemonic"))
-                    Log.d("hi", uri.path)
+                    Log.d("good_face", uri.path)
                     toast("성공적으로 지갑 데이터를 가져왔습니다!")
 
                     var intent = Intent(this@LoginActivity, DetailActivity::class.java)
