@@ -1,5 +1,7 @@
 package com.example.baehyeonbin.neverending_nightmare;
 
+import android.content.res.AssetFileDescriptor;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -54,6 +56,8 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
     private Runnable in;
 
     private ArrayList<User> userList;
+    private MediaPlayer m;
+    private String lastPlayed;
 
     private RotateAnimation makeRotateAnimation(float fromDegrees, float toDegress) {
         RotateAnimation rotateAnimation =
@@ -104,7 +108,7 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
             entries.add(new PieEntry((float) (100.0 / userList.size()), userList.get(i).getName()));
         }
 
-        PieDataSet set = new PieDataSet(entries, "Election Results");
+        PieDataSet set = new PieDataSet(entries, "사용자 ");
         set.setColors(ColorTemplate.VORDIPLOM_COLORS);
         PieData data = new PieData(set);
         pieChart.setData(data);
@@ -207,6 +211,44 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
 
     }
 
+    public void playSound() {
+        String word = "roulette_sound";
+        try {
+            if ((m == null)) {
+
+                m = new MediaPlayer();
+            } else if (m != null && lastPlayed.equalsIgnoreCase(word)) {
+                m.stop();
+                m.release();
+                m = null;
+                lastPlayed = "";
+                return;
+            } else if (m != null) {
+                m.release();
+                m = new MediaPlayer();
+            }
+
+            AssetFileDescriptor descriptor = getAssets().openFd(word + ".mp3");
+            long start = descriptor.getStartOffset();
+            long end = descriptor.getLength();
+
+            // get title
+            // songTitle=songsList.get(songIndex).get("songTitle");
+            // set the data source
+            try {
+                m.setDataSource(descriptor.getFileDescriptor(), start, end);
+            } catch (Exception e) {
+                Log.e("MUSIC SERVICE", "Error setting data source", e);
+            }
+
+            m.prepare();
+            m.setVolume(1f, 1f);
+            // m.setLooping(true);
+            m.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     private void loadData() {
         RoomService roomService = RetrofitUtil.INSTANCE.getRetrofit().create(RoomService.class);
@@ -217,8 +259,8 @@ public class RotationActivity extends AppCompatActivity implements Animation.Ani
             @Override
             public void onResponse(Call<WalletRoomResponse> call, Response<WalletRoomResponse> response) {
                 Log.e("code", Integer.toString(response.code()));
-                if(response.body() != null) {
-                    switch(response.code()) {
+                if (response.body() != null) {
+                    switch (response.code()) {
                         case 200: {
                             userList = response.body().getMembers();
                             setRotationView();
