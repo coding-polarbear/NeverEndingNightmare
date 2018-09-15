@@ -26,18 +26,7 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
-                String serverWallet = SharedPreferenceUtil.INSTANCE.getPreference(getApplicationContext(), "server_wallet");
-                String serverPrivateKey = SharedPreferenceUtil.INSTANCE.getPreference(getApplicationContext(), "server_private_key");
-                String serverMnemonic = SharedPreferenceUtil.INSTANCE.getPreference(getApplicationContext(), "server_mnemonic");
 
-                if(serverWallet != null && serverPrivateKey != null && serverMnemonic != null) {
-                    Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-                    startActivity(intent);
-                } else {
-                    Intent intent = new Intent(MainActivity.this, RegisterOrLoginActivity.class);
-//                  Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-                    startActivity(intent);
-                }
 
 
             }
