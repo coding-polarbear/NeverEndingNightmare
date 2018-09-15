@@ -17,4 +17,9 @@
         android:title="마이페이지"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/overflow_log"
+        android:title="나의 기록"
+        app:showAsAction="never" />
+
 </menu>

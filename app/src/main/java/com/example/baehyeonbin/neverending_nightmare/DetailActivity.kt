@@ -91,6 +91,11 @@ class DetailActivity : AppCompatActivity(){
                 var intent = Intent(this@DetailActivity, MypageActivity::class.java)
                 startActivity(intent)
             }
+
+            R.id.overflow_log -> {
+                var intent = Intent(this@DetailActivity, LogActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         return false
