@@ -29,6 +29,19 @@ class WorkOutActivity : AppCompatActivity() {
         item = intent.getSerializableExtra("item") as MoneyItem
         init()
         loadData()
+        setListener()
+    }
+
+    fun setListener(){
+        sendMoney.setOnClickListener {
+            var intent = Intent(this@WorkOutActivity, MoneySendActivity::class.java)
+            startActivity(intent)
+        }
+
+        receiveMoney.setOnClickListener {
+            var intent = Intent(this@WorkOutActivity, MoneyBackActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     fun init() {

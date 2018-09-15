@@ -49,7 +49,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:lineSpacingExtra="6sp"
-                android:text="하이콘 지갑의\n주소를 불러와 주세요 ."
+                android:text="하이콘 지갑의\n주소를 불러와 주세요"
                 android:textColor="#ffffff"
                 android:textSize="29sp" />
 
