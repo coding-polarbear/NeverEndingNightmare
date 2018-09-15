@@ -28,6 +28,10 @@ class WalletCreateActivity : AppCompatActivity(){
         wallet_button.setOnClickListener {
             createWallet()
         }
+
+        wallet_button_no.setOnClickListener {
+            toast("거절합니다")
+        }
     }
 
     fun createWallet() {

@@ -62,6 +62,7 @@
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/wallet_button_no"
             android:layout_width="300dp"
             android:layout_height="60dp"
             android:background="@drawable/bg_round_rect_white"
