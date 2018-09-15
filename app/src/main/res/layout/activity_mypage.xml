@@ -44,7 +44,7 @@
                     android:layout_marginTop="7dp"
 
 
-                    android:src="@drawable/ic_person_pin_black_24dp" />
+                    android:src="@drawable/ic_person_pin_blue_24dp" />
             </RelativeLayout>
 
             <LinearLayout
