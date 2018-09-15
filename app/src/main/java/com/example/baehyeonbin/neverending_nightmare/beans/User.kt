@@ -4,4 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class User (val name : String,
                  val wallet : String,
+                 val balance : Int,
                  @SerializedName("entered_wallet") val enteredWallet : ArrayList<MoneyItem>?)
